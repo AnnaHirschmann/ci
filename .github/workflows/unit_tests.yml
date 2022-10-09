@@ -1,0 +1,16 @@
+name: Unit tests #does not matter. String; can have spaces. If you have multiple workflows, good to use a useful name
+
+on: # what events trigger our workflow
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    
+jobs: # useful names are important
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+        cd test/unit
+        python -m unittest test_utils
