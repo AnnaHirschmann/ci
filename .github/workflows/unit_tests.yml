@@ -7,6 +7,12 @@ on: # what events trigger our workflow
     branches: [main]
     
 jobs: # useful names are important
+  code_style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: pycodestyle $(git ls-files "*.py") # nice way of generalizing and not having to list every python file
+      
   unit_tests:
     runs-on: ubuntu-latest
     steps:
